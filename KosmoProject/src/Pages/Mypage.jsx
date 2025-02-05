@@ -12,7 +12,7 @@ const MyPage = () => {
     });
 
     const [chatRooms, setChatRooms] = useState(['서울 여행자 모임', '제주도 맛집 투어', '강릉 힐링 여행']);
-    const [friends, setFriends] = useState(['백건우', '윤웅희', '강산산']);
+    const [friends, setFriends] = useState(['백건우', '윤웅희', 'dl이강산']);
     const [friendRequests, setFriendRequests] = useState(['김용환', '이가희']);
 
     const handleEnterChatRoom = (roomName) => {
