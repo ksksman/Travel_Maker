@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaCog } from 'react-icons/fa';  // 설정 아이콘
 import '../App.css';
 
 const MyPage = () => {
@@ -12,12 +14,13 @@ const MyPage = () => {
     });
 
     const [chatRooms, setChatRooms] = useState(['서울 여행자 모임', '제주도 맛집 투어', '강릉 힐링 여행']);
-    const [friends, setFriends] = useState(['백건우', '윤웅희', '강산산']);
+    const [friends, setFriends] = useState(['백건우', '윤웅희', '이강산']);
     const [friendRequests, setFriendRequests] = useState(['김용환', '이가희']);
+
+    const navigate = useNavigate();
 
     const handleEnterChatRoom = (roomName) => {
         alert(`"${roomName}" 채팅방에 입장합니다.`);
-        // 채팅방 입장 처리 로직 추가 가능
     };
 
     const handleLogout = () => {
@@ -56,6 +59,11 @@ const MyPage = () => {
                         </div>
                     </div>
                 </div>
+                {/* 설정 아이콘과 텍스트 */}
+                <div className="settings-container" onClick={() => navigate('/edit-profile', { state: { profile } })}>
+                    <FaCog className="settings-icon" />
+                    <span className="settings-text">개인정보 수정</span>
+                </div>
             </div>
 
             {/* 생성한 채팅 방 목록 */}
@@ -83,7 +91,7 @@ const MyPage = () => {
                 </ul>
             </section>
 
-            {/* 친구 요청 수락 */}
+            {/* 친구 요청 수락 및 거절 */}
             <section className="friend-requests-section card">
                 <h3>친구 요청</h3>
                 {friendRequests.length === 0 ? (
@@ -91,18 +99,29 @@ const MyPage = () => {
                 ) : (
                     <ul>
                         {friendRequests.map((request, index) => (
-                            <li key={index}>
-                                {request}
-                                <button
-                                    className="accept-button"
-                                    onClick={() => {
-                                        setFriends([...friends, request]);
-                                        setFriendRequests(friendRequests.filter((r) => r !== request));
-                                        alert(`${request}님을 친구로 추가했습니다.`);
-                                    }}
-                                >
-                                    수락
-                                </button>
+                            <li key={index} className="friend-request-item">
+                                <span>{request}</span>
+                                <div className="buttons-container">
+                                    <button
+                                        className="accept-button"
+                                        onClick={() => {
+                                            setFriends([...friends, request]);
+                                            setFriendRequests(friendRequests.filter((r) => r !== request));
+                                            alert(`${request}님을 친구로 추가했습니다.`);
+                                        }}
+                                    >
+                                        수락
+                                    </button>
+                                    <button
+                                        className="reject-button"
+                                        onClick={() => {
+                                            setFriendRequests(friendRequests.filter((r) => r !== request));
+                                            alert(`${request}님의 친구 요청을 거절했습니다.`);
+                                        }}
+                                    >
+                                        거절
+                                    </button>
+                                </div>
                             </li>
                         ))}
                     </ul>
