@@ -85,83 +85,101 @@ header {
 /*사이드메뉴뉴*/
 .side-menu {
   position: fixed;
+  left: 0;
   top: 0;
-  left: -290px;
-  width: 250px;
-  height: 100%;
-  background-color: #f4f4f4;
-  color: #333;
+  width: 260px;
+  height: 100vh;
+  background: #fafafa;
+  color: #222;
   padding: 20px;
-  transition: left 0.3s ease;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
   z-index: 1000;
 }
 
 .side-menu.open {
-  left: 0;
+  transform: translateX(0);
 }
 
 .side-menu ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 20px 0;
 }
 
-.side-menu li {
-  margin: 15px 0;
-  font-size: 18px;
+.side-menu ul li {
+  margin: 12px 0;
 }
 
-.side-menu a {
-  color: #007bff;
+.side-menu ul li a {
+  display: block;
   text-decoration: none;
-  font-weight: bold;
+  color: #222;
+  font-size: 17px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e6e6e6, #ffffff);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
 }
 
-.side-menu a:hover {
-  text-decoration: underline;
+.side-menu ul li a:hover {
+  background: linear-gradient(135deg, #d4eaff, #b9dbff);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
 .side-menu hr {
   border: none;
-  border-top: 1px solid #ddd;
-  margin: 20px 0;
+  border-top: 1px solid #ccc;
+  margin: 25px 0;
 }
 
-/* 메뉴 닫기 버튼 */
 .enter-menu-button {
-  position: absolute;
-  bottom: 50px;
-  right: 20px;
-  background-color: #007bff;
+  background: #007bff;
   color: white;
   border: none;
-  border-radius: 81px;
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 150px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .enter-menu-button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  background: #0056b3;
+  transform: translateY(-2px);
 }
+
 
 
 /* 슬라이드 배너 */
 .banner {
-  width: 90%;
-  max-width: 1200px;
-  height: 50vw;
-  max-height: 600px;
+  width: 50%; /* 가로폭 조정 */
+  max-width: 1000px; /* 최대 가로 크기 */
+  height: auto;
+  aspect-ratio: 16 / 9; /* 16:9 비율 유지 */
   margin: 20px auto;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #ddd;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: #e6f3ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.banner:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
 }
 
 .slides {
@@ -191,7 +209,7 @@ header {
   height: 12px;
   background-color: white;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: pointer;
   transition: opacity 0.3s, background-color 0.3s;
 }
@@ -201,24 +219,145 @@ header {
   background-color: #007bff;
 }
 
-/* 콘텐츠 박스 스타일 */
 .content-boxes {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
   margin-top: 20px;
 }
 
 .content-box {
-  background-color: white;
+  background: linear-gradient(145deg, #e6f3ff, #cce1ff);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.05);
+  width: calc(50% - 30px);
+  max-width: 750px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.content-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.recommended-travel h2, .notice-section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+/* 공지사항 및 연령별 여행지 추천 */
+.content-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.content-box {
+  background: linear-gradient(145deg, #e6f3ff, #cce1ff);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.05);
+  width: calc(50% - 30px);
+  max-width: 750px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.content-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.recommended-travel h2, .notice-section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.travel-recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.travel-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   border-radius: 12px;
+  background: #fff;
+  color: #222;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: calc(50% - 20px);
-  max-width: 600px;
-  text-align: left;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+.travel-item:hover {
+  background: #e0f4ff;
+  transform: translateY(-5px);
+}
+
+.travel-destination {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.travel-detail {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.popular-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 12px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.post-item:hover {
+  background: #e0f4ff;
+  transform: translateY(-5px);
+}
+
+.post-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.post-likes {
+  font-size: 14px;
+  color: #888;
+}
+
 
 /* 푸터 스타일 */
 footer {
@@ -374,5 +513,117 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.reject-button {
+  background-color: #FF4B4B; /* 빨간색 버튼 */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.buttons-container {
+  display: flex;
+  gap: 10px;
+}
+/* 설정 아이콘과 텍스트 */
+.settings-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: auto;
+  gap: 5px;
+}
+
+.settings-icon {
+  font-size: 24px;
+  color: #333;
+}
+
+.settings-text {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 개인정보수정 페이지 */
+.edit-profile-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+}
+
+.save-button {
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+.success-message {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #28a745;
+  text-align: center;
+  font-weight: bold;
+}
+
+.error-message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #dc3545;
+  text-align: center;
+  font-weight: bold;
 }
 
