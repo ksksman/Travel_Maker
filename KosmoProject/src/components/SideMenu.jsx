@@ -7,7 +7,7 @@ const SideMenu = ({ isMenuOpen, setIsMenuOpen }) => {
     return (
         <div className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
             <ul>
-                <li><Link to="/schedule" onClick={closeMenu}>일정 만들기</Link></li>
+                <li><Link to="/schedule" onClick={closeMenu}>나의 일정</Link></li>
                 <li><Link to="/schedule/load" onClick={closeMenu}>일정 불러오기</Link></li>
                 <li><Link to="/schedule/share" onClick={closeMenu}>일정 공유하기</Link></li>
             </ul>
