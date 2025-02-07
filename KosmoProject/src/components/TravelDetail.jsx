@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import "../styles/TravelDetail.css"; // CSS 파일을 임포트합니다.
+import "../styles/TravelDetail.css"; // ✅ CSS 파일 불러오기
 
 const TravelDetail = () => {
   const { id } = useParams();
 
-  // Mock 데이터 (백엔드 연결 후 API로 가져올 예정)
+  // ✅ Mock 데이터 (백엔드 연결 후 API로 가져올 예정)
   const mockData = {
     1: {
       name: "부산 해운대 주변 여행",
@@ -30,6 +30,7 @@ const TravelDetail = () => {
   const [selectedDate, setSelectedDate] = useState(Object.keys(trip?.itinerary || {})[0] || ""); // 기본 날짜 설정
   const [review, setReview] = useState(trip?.myReview || "");
   const [isEditing, setIsEditing] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState(""); // ✅ 배경 이미지 저장
 
   if (!trip) return <p>여행 정보를 찾을 수 없습니다.</p>;
 
@@ -50,8 +51,20 @@ const TravelDetail = () => {
       .catch(error => console.error("후기 저장 중 오류 발생:", error));
   };
 
+  // ✅ 배경 이미지 업로드 핸들러
+  const handleBackgroundUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file); // ✅ 브라우저에서 미리보기 URL 생성
+      setBackgroundImage(imageUrl);
+    }
+  };
+
   return (
-    <div className="travel-detail-container">
+    <div 
+      className="travel-detail-container" 
+      style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none" }} // ✅ 배경 이미지 적용
+    >
       <h1 className="travel-title">{trip.name}</h1>
       <p className="travel-date"><strong>여행 기간:</strong> {trip.date}</p>
 
@@ -99,6 +112,7 @@ const TravelDetail = () => {
         )}
       </div>
 
+      {/* 🔥 평점 섹션 */}
       <div className="rating-section">
         <p><strong>나의 평점:</strong></p>
         {[1, 2, 3, 4, 5].map((star) => (
@@ -111,6 +125,8 @@ const TravelDetail = () => {
           </span>
         ))}
       </div>
+
+     
 
       <div className="button-group">
         <button className="share-button">게시물에 공유</button>
