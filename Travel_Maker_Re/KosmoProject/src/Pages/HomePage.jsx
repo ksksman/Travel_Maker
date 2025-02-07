@@ -7,6 +7,10 @@ import '../App.css';
 const HomePage = () => {
     const navigate = useNavigate();
 
+    const handleNavigate = (path) => {
+        navigate(path); // 원하는 경로로 이동
+    };
+
     return (
         <div className="main-container">
             {/* 배너 슬라이더 */}
@@ -16,6 +20,12 @@ const HomePage = () => {
             <div className="content-section">
                 <div className="content-boxes">
                     <div className="recommended-travel content-box">
+                        <button
+                            className="navigate-button"
+                            onClick={() => handleNavigate('/travel-recommendations')}
+                        >
+                            <FaPlusCircle />
+                        </button>
                         <h2>연령별 추천 여행지</h2>
                         <div className="travel-recommendations-grid">
                             <div className="travel-item">
@@ -38,6 +48,12 @@ const HomePage = () => {
                     </div>
 
                     <div className="notice-section content-box">
+                        <button
+                            className="navigate-button"
+                            onClick={() => handleNavigate('/board')}
+                        >
+                            <FaPlusCircle />
+                        </button>
                         <h2>후기 게시판 인기글</h2>
                         <ul className="popular-posts-list">
                             <li>
