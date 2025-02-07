@@ -1,0 +1,101 @@
+/* ✅ 여행 카드 스타일 */
+.travel-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.travel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ 이미지 컨테이너 (변경 버튼 포함) */
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+/* ✅ 이미지 스타일 */
+.travel-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* ✅ 이미지 변경 버튼 (이미지 내부 우측 상단) */
+.change-image-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 12px;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none; /* 기본적으로 숨김 */
+}
+
+/* ✅ 마우스를 올리면 버튼 표시 */
+.image-container:hover .change-image-button {
+  display: block;
+}
+
+/* ✅ 이미지 없을 때 스타일 */
+.no-image {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* ✅ 여행 목록 컨테이너 */
+.travel-list-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ✅ 여행 카드 컨테이너 */
+.travel-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* ✅ 여행 정보 */
+.travel-info {
+  margin-top: 10px;
+}
+
+/* ✅ 상태 변경 드롭다운 */
+.status-container {
+  margin-top: 10px;
+}
+
+select {
+  width: 40%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
