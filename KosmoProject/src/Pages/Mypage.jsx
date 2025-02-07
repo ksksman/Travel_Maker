@@ -13,14 +13,19 @@ const MyPage = () => {
         profilePicture: '/images/default-profile.webp',
     });
 
-    const [chatRooms, setChatRooms] = useState(['서울 여행자 모임', '제주도 맛집 투어', '강릉 힐링 여행']);
+    const [chatRooms, setChatRooms] = useState(['서울 강남구', '제주도 공항맛집', '강릉 속초 힐링 여행']);
     const [friends, setFriends] = useState(['백건우', '윤웅희', '이강산']);
     const [friendRequests, setFriendRequests] = useState(['김용환', '이가희']);
 
     const navigate = useNavigate();
 
     const handleEnterChatRoom = (roomName) => {
-        alert(`"${roomName}" 채팅방에 입장합니다.`);
+        alert(`"${roomName}" 지도를 출력합니다.`);
+    };
+
+    const handleStartChat = (friendName) => {
+        alert(`${friendName}님과의 1대1 채팅을 시작합니다.`);
+        // navigate(`/chat/${friendName}`); // 실제 채팅 페이지로 이동하는 코드 추가 가능
     };
 
     const handleLogout = () => {
@@ -32,6 +37,7 @@ const MyPage = () => {
         if (confirmDelete) {
             alert('회원탈퇴가 완료되었습니다.');
         }
+        
     };
 
     return (
@@ -68,7 +74,7 @@ const MyPage = () => {
 
             {/* 생성한 채팅 방 목록 */}
             <section className="chat-room-section card">
-                <h3>생성한 채팅 방 목록</h3>
+                <h3>내가 생성한 스케쥴 지도 바로가기</h3>
                 <ul>
                     {chatRooms.map((room, index) => (
                         <li key={index} className="chat-room-item">
@@ -81,15 +87,19 @@ const MyPage = () => {
                 </ul>
             </section>
 
-            {/* 친구 목록 보기 */}
             <section className="friends-list-section card">
-                <h3>친구 목록</h3>
-                <ul>
-                    {friends.map((friend, index) => (
-                        <li key={index}>{friend}</li>
-                    ))}
-                </ul>
-            </section>
+    <h3>친구 목록</h3>
+    <ul>
+        {friends.map((friend, index) => (
+            <li key={index} className="friend-item">
+                <span>{friend}</span>
+                <button className="chat-button" onClick={() => handleStartChat(friend)}>
+                    1대1 채팅
+                </button>
+            </li>
+        ))}
+    </ul>
+</section>
 
             {/* 친구 요청 수락 및 거절 */}
             <section className="friend-requests-section card">
