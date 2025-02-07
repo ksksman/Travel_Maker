@@ -6,9 +6,6 @@ import SideMenu from './components/SideMenu';
 import HomePage from './pages/HomePage';
 import MyPage from './pages/MyPage';  // MyPage.jsx를 import
 import EditProfile from './Pages/Editprofile';  // EditProfile.jsx 추가
-import TravelList from "./components/TravelList";  // ✅ 올바른 경로 확인
-import TravelDetail from "./components/TravelDetail";
-
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,12 +19,9 @@ const App = () => {
             <Header toggleMenu={toggleMenu} />
             <SideMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             <Routes>
-                <Route path="/schedule" element={<TravelList />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="/mypage" element={<MyPage />} /> {/* 마이페이지 라우트 */}
                 <Route path="/edit-profile" element={<EditProfile />} /> {/* 개인정보 수정 라우트 */}
-                <Route path="/trips" element={<TravelList />} />
-                <Route path="/trips/:id" element={<TravelDetail />} />
             </Routes>
         </Router>
     );
